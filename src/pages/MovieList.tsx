@@ -4,13 +4,11 @@ import { useEffect, useMemo } from "react";
 import { Button } from "@mui/material";
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
-// import CircularProgress from "@mui/material/CircularProgress";
 import { useNavigate } from "react-router";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import styled from "styled-components";
 
 import ModalControl from "../components/ModalControl";
-import Paging from "../components/Paging";
 import { useListMovieData } from "../hooks/movie";
 import TableControl, { Board } from "../components/TableControl";
 import {
@@ -105,10 +103,6 @@ const MovieList = () => {
 
   const movies = useMemo(() => (data ? data.results : []), [data]);
 
-  const calcPageRange = (totalPage: number) => {
-    return Math.ceil(totalPage / 20) > 5 ? 5 : Math.ceil(totalPage / 20);
-  };
-  //
   const media = useRecoilValue(selectedMediaState);
   const handleModalProps = useSetRecoilState(modalPropsState);
 
@@ -147,12 +141,6 @@ const MovieList = () => {
           </Header>
           <TableBox>
             <TableControl Board={Boards} datas={movies} />
-            <Paging
-                pageName={"MovieList"}
-                itemsCountPerPage={20}
-                totalItemsCount={data ? data.total_results : 0}
-                pageRangeDisplayed={data ? calcPageRange(data.total_results) : 0}
-              />
               <ModalControl handleRefetch={handleRefetch} />
           </TableBox>
         </>

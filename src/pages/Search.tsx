@@ -5,7 +5,6 @@ import styled from "styled-components";
 import PeopleList from "../layouts/PeopleList";
 import SearchForm from "../layouts/SearchForm";
 
-import Paging from "../components/Paging";
 import TableControl from "../components/TableControl";
 import { useSearchData } from "../hooks/movie";
 import { tvBoard, movieBoard } from "../public/data";
@@ -55,10 +54,6 @@ const Search = () => {
 
   const searchResult = useMemo(() => (data ? data.results : []), [data]);
 
-  const calcPageRange = (totalPage: number) => {
-    return Math.ceil(totalPage / 20) > 5 ? 5 : Math.ceil(totalPage / 20);
-  };
-
 
   useEffect(() => {
     if (selectedValue === "movie") {
@@ -80,12 +75,6 @@ const Search = () => {
               <TableBox>
                 <TableControl Board={Board} datas={searchResult} />
               </TableBox>
-              <Paging
-                pageName="Search"
-                itemsCountPerPage={20}
-                totalItemsCount={data.total_results}
-                pageRangeDisplayed={calcPageRange(data.total_results)}
-              />
             </>
           )
         ) : (
