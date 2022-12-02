@@ -40,7 +40,6 @@ const Login = () => {
           "_blank",
         );
 
-        
         let sessionId;
         const interval = setInterval(async () => {
           sessionId = await fetchSessionId(reqToken);
@@ -54,7 +53,7 @@ const Login = () => {
         }, 3000);
       }
     } catch (err: unknown) {
-      alert("error 발생 :D");
+      alert("error");
     }
   };
 
@@ -76,7 +75,7 @@ const Login = () => {
                 required: true,
                 pattern:  {
                   value: /\S+@\S+\.\S+/,
-                  message: "이메일 형식에 맞지 않습니다."
+                  message: "이메일 형식이 아닙니다."
                 },
               })}
               autoFocus
@@ -94,7 +93,7 @@ const Login = () => {
                 required: "비밀번호는 필수 입력입니다.",
                 pattern: {
                     value: /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
-                    message: "8자리 이상 비밀번호를 사용하세요."
+                    message: "영문, 숫자, 특수문자 중 3종류 이상을 조합하여 최소 8자리 이상 비밀번호를 사용하세요."
                   },
               })}
             />
@@ -107,7 +106,7 @@ const Login = () => {
               fullWidth
               variant="contained"
             >
-              Sign In
+              Login
             </Button>
             </form>
         </Container>

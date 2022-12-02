@@ -1,40 +1,18 @@
 import React, { useState } from "react";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { useNavigate } from "react-router";
 
 import { Button, TextField } from "@mui/material";
 
 import { useCookies } from "react-cookie";
-import { useNavigate } from "react-router";
-import { useRecoilState, useRecoilValue } from "recoil";
 import styled from "styled-components";
 
 import { fetchUpdateMovieComment } from "../api/api";
 import { getAccessToken } from "../hooks/getToken";
 import { MovieListIdState, selectedMediaState } from "../atoms/atom";
 
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: calc(100% - 200px);
-  height: 100%;
-  margin-left: 200px;
-  overflow: hidden;
-  border: none;
-`;
 
-const Box = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin-top: 40vh;
-`;
-
-const Text = styled(TextField)`
-  margin-bottom: 10px !important;
-`;
-
-const Update = () => {
+const MovieUpdate = () => {
   const navigation = useNavigate();
   const [cookies, setCookie] = useCookies(["access_token"]);
 
@@ -62,14 +40,14 @@ const Update = () => {
       );
 
       if (resultStatus) {
-        alert("댓글이 추가 되었습니다.");
+        alert("comment가 추가 되었습니다.");
 
         navigation("/MovieList");
       }
     } catch (err: unknown) {
       console.error(err);
       setMedia({ ...media, id: -1 });
-      alert("서버오류가 발생 했습니다.");
+      alert("서버오류가 발생.");
 
       navigation("/MovieList");
     }
@@ -96,4 +74,28 @@ const Update = () => {
   );
 };
 
-export default Update;
+export default MovieUpdate;
+
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: calc(100% - 200px);
+  height: 100%;
+  margin-left: 200px;
+  overflow: hidden;
+  border: none;
+`;
+
+const Box = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 40vh;
+`;
+
+const Text = styled(TextField)`
+  margin-bottom: 10px !important;
+`;

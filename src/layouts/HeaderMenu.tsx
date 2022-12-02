@@ -1,11 +1,9 @@
 import MovieIcon from "@mui/icons-material/Movie";
 import Avatar from "@mui/material/Avatar";
 import { NavLink } from "react-router-dom";
-// import { useResetRecoilState } from "recoil";
 import styled from "styled-components";
 
 import { menuItems } from "../public/data";
-// import { MovieListIdState, selectedMediaState } from "../atoms/atom";
 
 const Nav = styled.nav`
   display: flex;
@@ -86,10 +84,6 @@ const Menu = () => {
             <Item
               key={item.key}
               to={item.path}
-              onClick={() => {
-                // useResetRecoilState(MovieListIdState);
-                // useResetRecoilState(selectedMediaState);
-              }}
             >
               {item.name}
             </Item>
