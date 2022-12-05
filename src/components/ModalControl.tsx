@@ -63,7 +63,7 @@ const ModalControl = ({ handleRefetch }: IModalControlProps) => {
       mediaType: media.media_type,
       accessToken: accessToken,
     });
-  }, [deleteListMutate, media]);
+  }, [media]);
 
   useEffect(() => {
     setMedia({ ...media, id: -1 });
@@ -99,7 +99,7 @@ const ModalControl = ({ handleRefetch }: IModalControlProps) => {
                   <Button onClick={() => {navigation("/MovieUpdate");}}>
                     수정
                   </Button>
-                  <Button >삭제</Button>
+                  <Button>삭제</Button>
                 </>
               ) : null}
             </Box>
