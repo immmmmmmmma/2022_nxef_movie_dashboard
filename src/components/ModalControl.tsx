@@ -99,7 +99,7 @@ const ModalControl = ({ handleRefetch }: IModalControlProps) => {
                   <Button onClick={() => {navigation("/MovieUpdate");}}>
                     수정
                   </Button>
-                  <Button onClick={handleDeleteMovie}>삭제</Button>
+                  <Button >삭제</Button>
                 </>
               ) : null}
             </Box>
